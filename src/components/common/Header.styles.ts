@@ -10,6 +10,7 @@ export const HeaderContainer = styled.header`
   // flex-direction: column;
   // margin-bottom: 16px;
   min-height: 90px;
+  position: relative;
 
   div {
     display: flex;
