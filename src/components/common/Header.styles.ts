@@ -3,18 +3,20 @@ import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
   background: linear-gradient(#000, #000, rgba(0, 0, 0, 0));
-  position: fixed;
+  position: sticky;
+  top: 0;
   width: 100%;
   display: flex;
-  flex-direction: column;
-  margin-bottom: 16px;
+  // flex-direction: column;
+  // margin-bottom: 16px;
   min-height: 90px;
 
   div {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     padding: 0 10px;
-    justify-content: space-between;
+    // justify-content: space-between;
+    width: 100%;
     min-height: 40px;
     // margin-bottom: 15px;
   }

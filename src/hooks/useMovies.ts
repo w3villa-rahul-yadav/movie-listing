@@ -35,7 +35,8 @@ export const useMovies = () => {
     setMovies([]);
     setPage(1);
     setHasMore(true);
-  }, []);
+    loadMovies();
+  }, [loadMovies]);
 
   return { movies, loadMoreMovies, hasMore, loading, error, resetMovies };
 };

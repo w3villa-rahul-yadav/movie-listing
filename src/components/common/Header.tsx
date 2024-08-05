@@ -26,7 +26,7 @@ const Header: React.FC<HeaderProps> = ({ setFilterText }) => {
       <div>
         <div>
           <img src={back} alt="Back" />
-          <h1 className="titillium-web-light">Romantic Comedy</h1>
+          <h2 className="titillium-web-light">Romantic Comedy</h2>
         </div>
         <img 
           src={search} 
