@@ -10,9 +10,9 @@ export const HeaderContainer = styled.header`
   // flex-direction: column;
   // margin-bottom: 16px;
   min-height: 90px;
-  position: relative;
-
+  
   div {
+    position: relative;
     display: flex;
     align-items: baseline;
     padding: 0 10px;
