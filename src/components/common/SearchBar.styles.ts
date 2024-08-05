@@ -5,6 +5,8 @@ export const SearchInput = styled.input`
   padding: 8px;
   border-radius: 4px;
   border: 1px solid #ccc;
-  width: 100%;
+  width: 90%;
   max-width: 400px;
+  margin:0 auto;
+  outline: none;
 `;
