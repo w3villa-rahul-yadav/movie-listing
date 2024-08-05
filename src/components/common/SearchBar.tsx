@@ -1,9 +1,20 @@
 import React from 'react';
-import { SearchInput } from './SearchBar.styles'; 
+import { SearchInput } from './SearchBar.styles';
 
-const SearchBar: React.FC = () => {
+interface SearchBarProps {
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const SearchBar: React.FC<SearchBarProps> = ({ value, onChange }) => {
   return (
-    <SearchInput type="text" placeholder="Search..." />
+    <SearchInput
+      type="text"
+      placeholder="Search..."
+      value={value}
+      onChange={onChange}
+      className="titillium-web-regular"
+    />
   );
 };
 

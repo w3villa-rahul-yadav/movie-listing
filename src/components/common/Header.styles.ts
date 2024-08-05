@@ -1,37 +1,40 @@
 // src/components/common/Header.styles.ts
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
-  background: linear-gradient( #000,#000, rgba(0,0,0,0));
-   position: fixed;
-  width:100%;
+  background: linear-gradient(#000, #000, rgba(0, 0, 0, 0));
+  position: fixed;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  // align-items: center;
   margin-bottom: 16px;
-  div{
-  display:flex;
-  align-items: center;
-  padding:0 10px;
-  justify-content: space-between;
-  min-height:40px;
-  margin-bottom: 15px;
-  }
-  .full{
-    background-color: #fff;
+  min-height: 90px;
 
+  div {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    justify-content: space-between;
+    min-height: 40px;
+    // margin-bottom: 15px;
   }
-  div>div{
-  display:flex;
-  gap:10px;
-  margin:0;
+
+  .full {
+    background-color: #fff;
   }
-  img{
-  width:20px;
-  height:20px
+
+  div > div {
+    display: flex;
+    gap: 10px;
+    margin: 0;
   }
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
   h1 {
     font-size: 1.5rem;
-    // margin:0 auto;
   }
 `;

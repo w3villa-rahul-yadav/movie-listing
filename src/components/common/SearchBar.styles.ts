@@ -6,7 +6,7 @@ export const SearchInput = styled.input`
   border-radius: 4px;
   border: 1px solid #ccc;
   width: 90%;
-  max-width: 400px;
+  // max-width: 400px;
   margin:0 auto;
   outline: none;
 `;

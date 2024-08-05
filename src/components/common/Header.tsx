@@ -4,11 +4,21 @@ import { HeaderContainer } from './Header.styles';
 import back from '../../img/Back.png';
 import search from '../../img/search.png';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  setFilterText: (text: string) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ setFilterText }) => {
   const [showSearchBar, setShowSearchBar] = useState(false);
+  const [searchText, setSearchText] = useState('');
 
   const toggleSearchBar = () => {
     setShowSearchBar(prevShowSearchBar => !prevShowSearchBar);
+  };
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchText(e.target.value);
+    setFilterText(e.target.value);
   };
 
   return (
@@ -16,7 +26,7 @@ const Header: React.FC = () => {
       <div>
         <div>
           <img src={back} alt="Back" />
-          <h1 className="titillium-web-bold">Romantic Comedy</h1>
+          <h1 className="titillium-web-light">Romantic Comedy</h1>
         </div>
         <img 
           src={search} 
@@ -25,7 +35,9 @@ const Header: React.FC = () => {
           style={{ cursor: 'pointer' }} 
         />
       </div>
-      {showSearchBar && <SearchBar />}
+      {showSearchBar && (
+        <SearchBar value={searchText} onChange={handleSearchChange} />
+      )}
     </HeaderContainer>
   );
 };

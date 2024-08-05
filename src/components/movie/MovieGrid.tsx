@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useMovies } from '../../hooks/useMovies';
 import MovieCard from './MovieCard';
 import { GridContainer } from './MovieGrid.styles';
 
-const MovieGrid: React.FC = () => {
+interface MovieGridProps {
+  filterText: string;
+}
+
+const MovieGrid: React.FC<MovieGridProps> = ({ filterText }) => {
   const { movies, loadMoreMovies, hasMore, loading, error, resetMovies } = useMovies();
-  const [filterText, setFilterText] = useState('');
 
   const filteredMovies = filterText
     ? movies.filter(movie => movie.title.toLowerCase().includes(filterText.toLowerCase()))
@@ -18,15 +21,7 @@ const MovieGrid: React.FC = () => {
 
   return (
     <>
-      <input
-        type="text"
-        placeholder="Search..."
-        value={filterText}
-        onChange={(e) => setFilterText(e.target.value)}
-        className="titillium-web-regular"
-      />
       {error && <div className="titillium-web-regular">{error}</div>}
-      {console.log("filteredMovies :", filteredMovies)}
       <InfiniteScroll
         dataLength={filteredMovies.length}
         next={loadMoreMovies}
@@ -36,10 +31,7 @@ const MovieGrid: React.FC = () => {
       >
         <GridContainer>
           {filteredMovies.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              movie={movie}
-            />
+            <MovieCard key={movie.id} movie={movie} />
           ))}
         </GridContainer>
       </InfiniteScroll>

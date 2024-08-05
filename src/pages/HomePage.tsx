@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../components/common/Header';
 import MovieGrid from '../components/movie/MovieGrid';
 import { Container } from './HomePage.styles'; 
 
 const HomePage: React.FC = () => {
+    const [filterText, setFilterText] = useState('');
+
   return (
     <Container>
-      <Header />
-      <MovieGrid />
+      <Header setFilterText={setFilterText} />
+      <MovieGrid filterText={filterText}  />
     </Container>
   );
 };
