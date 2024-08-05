@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Movie } from '../types/movie';
-import { fetchMovies } from '../services/movieService';
+import { fetchMovies } from '../services/movieService'; 
 
 export const useMovies = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -11,13 +11,11 @@ export const useMovies = () => {
 
   const loadMovies = useCallback(async () => {
     setLoading(true);
+    setError(null);
     try {
       const newMovies = await fetchMovies(page);
-      if (newMovies.length === 0) {
-        setHasMore(false);
-      } else {
-        setMovies(prevMovies => [...prevMovies, ...newMovies]);
-      }
+      setMovies((prevMovies) => [...prevMovies, ...newMovies]);
+      setHasMore(newMovies.length > 0);
     } catch (err) {
       setError('Failed to load movies.');
     } finally {
@@ -30,7 +28,7 @@ export const useMovies = () => {
   }, [loadMovies]);
 
   const loadMoreMovies = useCallback(() => {
-    setPage(prevPage => prevPage + 1);
+    setPage((prevPage) => prevPage + 1);
   }, []);
 
   const resetMovies = useCallback(() => {

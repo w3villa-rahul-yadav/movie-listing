@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useMovies } from '../../hooks/useMovies';
 import MovieCard from './MovieCard';
 import { GridContainer } from './MovieGrid.styles';
+import { Movie } from '../../types/movie';
 
 interface MovieGridProps {
   filterText: string;
@@ -10,28 +11,39 @@ interface MovieGridProps {
 
 const MovieGrid: React.FC<MovieGridProps> = ({ filterText }) => {
   const { movies, loadMoreMovies, hasMore, loading, error, resetMovies } = useMovies();
-
-  const filteredMovies = filterText
-    ? movies.filter(movie => movie.title.toLowerCase().includes(filterText.toLowerCase()))
-    : movies;
+  const [filterMovies, setFilterMovies] = useState<Movie[]>(movies);
 
   useEffect(() => {
-    resetMovies(); // Reset movies when filterText changes
+    if (filterText) {
+      const filteredMovies = movies.filter(movie =>
+        movie.title.toLowerCase().includes(filterText.toLowerCase())
+      );
+      setFilterMovies(filteredMovies);
+    } else {
+      setFilterMovies(movies);
+    }
+  }, [filterText, movies]);
+
+  useEffect(() => {
+    if (!filterText) {
+      resetMovies();
+    }
   }, [filterText, resetMovies]);
 
   return (
     <>
       {error && <div className="titillium-web-regular">{error}</div>}
+      {console.log("filterMovies:", filterMovies)}
       <InfiniteScroll
-        dataLength={filteredMovies.length}
+        dataLength={filterMovies.length}
         next={loadMoreMovies}
         hasMore={hasMore}
         loader={<h4 className="titillium-web-regular">Loading...</h4>}
         style={{ overflow: 'hidden' }}
       >
         <GridContainer>
-          {filteredMovies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
+          {filterMovies.map((movie, index) => (
+            <MovieCard key={index} movie={movie} />
           ))}
         </GridContainer>
       </InfiniteScroll>
