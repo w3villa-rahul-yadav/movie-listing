@@ -23,13 +23,15 @@ const MovieGrid: React.FC = () => {
         placeholder="Search..."
         value={filterText}
         onChange={(e) => setFilterText(e.target.value)}
+        className="titillium-web-regular"
       />
-      {error && <div>{error}</div>}
+      {error && <div className="titillium-web-regular">{error}</div>}
+      {console.log("filteredMovies :", filteredMovies)}
       <InfiniteScroll
         dataLength={filteredMovies.length}
         next={loadMoreMovies}
         hasMore={hasMore}
-        loader={<h4>Loading...</h4>}
+        loader={<h4 className="titillium-web-regular">Loading...</h4>}
         style={{ overflow: 'hidden' }}
       >
         <GridContainer>
@@ -41,7 +43,7 @@ const MovieGrid: React.FC = () => {
           ))}
         </GridContainer>
       </InfiniteScroll>
-      {loading && <h4>Loading more movies...</h4>}
+      {loading && <h4 className="titillium-web-regular">Loading more movies...</h4>}
     </>
   );
 };

@@ -7,9 +7,9 @@ interface MovieCardProps {
 }
 
 const MovieCard = forwardRef<HTMLDivElement, MovieCardProps>(({ movie }, ref) => (
-  <Card ref={ref}>
+  <Card ref={ref} className="titillium-web-light">
     <Image src={movie.imageUrl} alt={movie.title} />
-    <Title>{movie.title}</Title>
+    <Title className="titillium-web-light">{movie.title}</Title>
   </Card>
 ));
 
