@@ -1,3 +1,4 @@
+// import/no-anonymous-default-export
 export default {
     colors: {
       primary: '#171717',

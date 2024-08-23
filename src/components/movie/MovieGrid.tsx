@@ -10,7 +10,7 @@ interface MovieGridProps {
 }
 
 const MovieGrid: React.FC<MovieGridProps> = ({ filterText }) => {
-  const { movies, loadMoreMovies, hasMore, loading, error, resetMovies } = useMovies();
+  const { movies, loadMoreMovies, hasMore, loading, resetMovies } = useMovies();
   const [filterMovies, setFilterMovies] = useState<Movie[]>(movies);
 
   useEffect(() => {
