@@ -1,5 +1,5 @@
 // import/no-anonymous-default-export
-export default theme = {
+const theme = {
     colors: {
       primary: '#171717',
       secondary: '#444',
@@ -14,3 +14,4 @@ export default theme = {
     borderRadius: '4px'
   };
   
+export default theme;
