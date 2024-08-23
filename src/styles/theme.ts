@@ -1,5 +1,5 @@
 // import/no-anonymous-default-export
-export default {
+export default theme = {
     colors: {
       primary: '#171717',
       secondary: '#444',
